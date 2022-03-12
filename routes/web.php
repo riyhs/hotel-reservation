@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\GuestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,15 +20,26 @@ Route::get('/', function () {
 });
 
 Route::controller(UserController::class)->group(function () {
+    // Route::get('/register', 'index');
+    // Route::post('/register', 'store')->name('register');
+    Route::get('/admin', 'loginView');
+    Route::post('/admin', 'login')->name('admin');
+    Route::get('/admin-logout', 'logout');
+});
+
+Route::get('/admin', function () {
+    return view('admin/auth/login');
+});
+
+Route::get('/dashboard', [UserController::class, 'dashboard']);
+
+// === GUEST === //
+Route::controller(GuestController::class)->group(function () {
     Route::get('/register', 'index');
     Route::post('/register', 'store')->name('register');
     Route::get('/login', 'loginView');
     Route::post('/login', 'login')->name('login');
-    Route::get('/logout', 'logOut');
+    Route::get('/logout', 'logout');
 });
 
-Route::get('/login', function () {
-    return view('auth/login');
-});
-
-Route::get('/dashboard', [UserController::class, 'dashboard']);
+Route::get('/home', [GuestController::class, 'home']);

@@ -12,24 +12,15 @@ use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         return view('auth.register');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        return view('auth.register');
+        return view('admin.auth.register');
     }
 
     public function store(Request $request)
@@ -57,34 +48,34 @@ class UserController extends Controller
         ]);
 
         $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard('web')->attempt($credentials)) {
             return redirect()->intended('dashboard')
                 ->withSuccess('Signed in');
         }
 
-        return redirect("login")->withSuccess('Login details are not valid');
+        return redirect("admin")->withSuccess('Login details are not valid');
     }
 
     public function loginView()
     {
-        return view('auth.login');
+        return view('admin.auth.login');
     }
 
     public function dashboard()
     {
-        if (Auth::check()) {
+        if (Auth::guard('web')->check()) {
             return view('dashboard');
         }
 
-        return redirect("login")->withSuccess('You are not allowed to access');
+        return redirect("admin")->withSuccess('You are not allowed to access');
     }
 
-    public function logOut()
+    public function logout()
     {
         Session::flush();
-        Auth::logout();
+        Auth::guard('web')->logout();
 
-        return Redirect('login');
+        return Redirect('admin');
     }
 
     /**
@@ -116,10 +107,10 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request, User $user)
-    {
-        //
-    }
+    // public function update(UpdateUserRequest $request, User $user)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.
