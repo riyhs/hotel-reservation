@@ -41,17 +41,25 @@
                         <li class="nav-item"><a class="nav-link" href="accomodation.html">Accomodation</a>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                        <li class="nav-item submenu dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                                aria-haspopup="true" aria-expanded="false">Blog</a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                                <li class="nav-item"><a class="nav-link" href="blog-single.html">Blog
-                                        Details</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="elements.html">Elemests</a></li>
+                        <li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        @if (Route::has('login'))
+                            @auth('guest')
+                                <li class="nav-item">
+                                    <a href="{{ url('/home') }}" class="nav-link">Profile</a>
+                                </li>
+                            @else
+                                <li class="nav-item">
+                                    <a href="{{ route('login') }}" class="nav-link">Log in</a>
+                                </li>
+
+                                @if (Route::has('register'))
+                                    <li class="nav-item">
+                                        <a href="{{ route('register') }}" class="nav-link">Register</a>
+                                    </li>
+                                @endif
+                            @endauth
+                        @endif
                     </ul>
                 </div>
             </nav>
