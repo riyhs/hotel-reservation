@@ -64,7 +64,7 @@ class UserController extends Controller
     public function dashboard()
     {
         if (Auth::guard('web')->check()) {
-            return view('dashboard');
+            return view('admin.dashboard');
         }
 
         return redirect("admin")->withSuccess('You are not allowed to access');
