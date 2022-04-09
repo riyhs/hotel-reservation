@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Guest>
  */
-class UserFactory extends Factory
+class GuestFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,24 +20,15 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'email' => 'riyaldi.dev@gmail.com',
+            'username' => $this->faker->firstNameMale(),
+            'email' => 'riyaldi.guest@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('kepo'),
+            'phone' => $this->faker->phoneNumber(),
+            'address' => $this->faker->address(),
+            'gender' => 'other',
+            'age' => 20,
             'remember_token' => Str::random(10),
         ];
-    }
-
-    /**
-     * Indicate that the model's email address should be unverified.
-     *
-     * @return static
-     */
-    public function unverified()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'email_verified_at' => null,
-            ];
-        });
     }
 }
