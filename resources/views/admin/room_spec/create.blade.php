@@ -20,7 +20,7 @@
                     </div>
 
                     <div class="text-right">
-                        <button type="submit" href="{{ route('save_room_spec') }}" class="btn btn-success">Save</button>
+                        <button type="submit" class="btn btn-success">Save</button>
                     </div>
                 </form>
             </div>

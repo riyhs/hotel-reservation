@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Room;
 use App\Models\RoomSpec;
 use Illuminate\Http\Request;
 
-class RoomSpecController extends Controller
+class RoomController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class RoomSpecController extends Controller
      */
     public function index()
     {
-        $roomSpecs = RoomSpec::orderBy('id', 'desc')->get();
-        return view('admin.room_spec.index', compact('roomSpecs'));
+        $rooms = Room::orderBy('id', 'desc')->get();
+        return view('admin.room.index', compact('rooms'));
     }
 
     /**
@@ -25,12 +26,8 @@ class RoomSpecController extends Controller
      */
     public function create()
     {
-        //
-    }
-
-    public function view_create()
-    {
-        return view('admin.room_spec.create');
+        $roomSpecs = RoomSpec::orderBy('id', 'desc')->get();
+        return view('admin.room.create', compact('roomSpecs'));
     }
 
     /**
@@ -43,73 +40,77 @@ class RoomSpecController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string'],
+            'roomSpec' => ['required'],
         ]);
 
-        $roomSpec = RoomSpec::create([
+        $room = Room::create([
             'name' => $request->name,
-            'description' => $request->description,
+            'no' => 'A01',
+            'price' => $request->price,
+            'amount' => $request->amount,
+            'used' => 0,
+            'spec_id' => $request->roomSpec
         ]);
 
-        return redirect("room_spec")->withSuccess('Room Spec Created Successfully');
+        return redirect("room")->withSuccess('Room Created Successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\RoomSpec  $roomSpec
+     * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Room $room)
     {
-        // 
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\RoomSpec  $roomSpec
+     * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $roomSpec = RoomSpec::find($id);
+        $room = Room::find($id);
+        $roomSpecs = RoomSpec::orderBy('id', 'desc')->get();
 
-        return view('admin.room_spec.edit', compact('roomSpec'));
+        return view('admin.room.edit', compact('room', 'roomSpecs'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\RoomSpec  $roomSpec
+     * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string'],
         ]);
 
-        $roomSpec = RoomSpec::find($id);
-        $roomSpec->name = $request->name;
-        $roomSpec->description = $request->description;
-        $roomSpec->update();
+        $room = Room::find($id);
+        $room->name = $request->name;
+        $room->description = $request->description;
+        $room->update();
 
-        return redirect('room_spec')->withSuccess('Room Spec Updated Successfully');
+        return redirect('room')->withSuccess('Room Updated Successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\RoomSpec  $roomSpec
+     * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $roomSpec = RoomSpec::find($id);
-        $roomSpec->delete();
-        return redirect('room_spec')->withSuccess('Room Spec Deleted Successfully');
+        $room = Room::find($id);
+        $room->delete();
+        return redirect('room')->withSuccess('Room Deleted Successfully');
     }
 }

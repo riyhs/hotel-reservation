@@ -15,7 +15,7 @@
             </li>
 
             <li class="menu-header">Master</li>
-            <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
+            <li class="{{ request()->is('room') ? 'active' : '' }}">
                 <a class="nav-link" href={{ route('room') }}><i class="far fa-bookmark"></i>
                     <span>Room</span>
                 </a>

@@ -14,6 +14,6 @@ class Room extends Model
 
     public function roomSpec()
     {
-        return $this->hasOne(RoomSpec::class);
+        return $this->belongsTo(RoomSpec::class, 'spec_id');
     }
 }

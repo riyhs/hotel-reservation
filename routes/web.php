@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\RoomSpecController;
@@ -48,6 +49,15 @@ Route::controller(RoomSpecController::class)->group(function () {
     Route::get('/room_spec/edit/{id}', 'edit')->name('edit_room_spec');
     Route::put('/room_spec/edit/{id}', 'update');
     Route::delete('/room_spec/delete/{id}', 'destroy')->name('delete_room_spec');
+});
+
+Route::controller(RoomController::class)->group(function () {
+    Route::get('/room', 'index')->name('room');
+    Route::get('/room/create', 'create')->name('create_room');
+    Route::post('/room/create', 'store')->name('save_room');
+    Route::get('/room/edit/{id}', 'edit')->name('edit_room');
+    Route::put('/room/edit/{id}', 'update');
+    Route::delete('/room/delete/{id}', 'destroy')->name('delete_room');
 });
 
 // === GUEST === //
