@@ -16,4 +16,9 @@ class RoomSpec extends Model
     {
         return $this->hasMany(Room::class);
     }
+
+    public function facilities()
+    {
+        return $this->hasMany(RoomFacility::class);
+    }
 }

@@ -11,21 +11,19 @@ TABLE :
 
 2. tb_room
 	id
-	room_people
-	room_no
-	room_price
-	room_photo
-	room_amount
-	room_used
-	room_spec_id
+	price
+	photo
+	amount
+	used
+	spec_id
 3. tb_room_spec
 	id
-	spec_name
-	spec_description
+	name
+	description
 4. tb_room_facility
 	id
-	name_facility
-	id_room_spec
+	facility_name
+	spec_id
 
 5. tb_facility_hotel
 	id

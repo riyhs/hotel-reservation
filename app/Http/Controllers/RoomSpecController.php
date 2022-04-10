@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\RoomSpec;
+use App\Models\RoomFacility;
 use Illuminate\Http\Request;
 
 class RoomSpecController extends Controller
@@ -74,8 +75,11 @@ class RoomSpecController extends Controller
     public function edit($id)
     {
         $roomSpec = RoomSpec::find($id);
+        $facilities = RoomFacility::orderBy('name', 'ASC')
+            ->where('spec_id', $id)
+            ->get();
 
-        return view('admin.room_spec.edit', compact('roomSpec'));
+        return view('admin.room_spec.edit', compact('roomSpec', 'facilities'));
     }
 
     /**
