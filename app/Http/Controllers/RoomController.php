@@ -45,7 +45,6 @@ class RoomController extends Controller
 
         $room = Room::create([
             'name' => $request->name,
-            'no' => 'A01',
             'price' => $request->price,
             'amount' => $request->amount,
             'used' => 0,
