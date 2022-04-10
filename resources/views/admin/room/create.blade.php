@@ -10,22 +10,26 @@
                     @csrf
                     <div class="form-group">
                         <label>Room Name</label>
-                        <input type="text" class="form-control" name="name" placeholder="Room asoy">
+                        <input type="text" class="form-control" name="name" placeholder="Room name" maxlength="255"
+                            required>
                     </div>
 
                     <div class="form-group">
                         <label>Room Price</label>
-                        <input type="number" class="form-control" name="price" placeholder="Price">
+                        <input type="number" class="form-control" name="price" placeholder="Price" maxlength="9" required
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                     </div>
 
                     <div class="form-group">
                         <label>Room Amount</label>
-                        <input type="number" class="form-control" name="amount" placeholder="How much room available">
+                        <input type="number" class="form-control" name="amount" placeholder="How much room available"
+                            maxlength="4" required
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                     </div>
 
                     <div class="form-group">
                         <label>Room Spec</label>
-                        <select class="form-control" name="roomSpec">
+                        <select class="form-control" name="roomSpec" required>
                             <option>-- Room Spec --</option>
                             @foreach ($roomSpecs as $roomSpec)
                                 <option value="{{ $roomSpec->id }}">{{ $roomSpec->name }}</option>
