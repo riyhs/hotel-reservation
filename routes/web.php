@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\RoomSpecController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,19 @@ Route::get('/admin', function () {
 });
 
 Route::get('/dashboard', [UserController::class, 'dashboard']);
+
+Route::get('/room', function () {
+    return view('admin/room');
+})->name('room');
+
+Route::controller(RoomSpecController::class)->group(function () {
+    Route::get('/room_spec', 'index')->name('room_spec');
+    Route::get('/room_spec/create', 'view_create')->name('create_room_spec');
+    Route::post('/room_spec/create', 'store')->name('save_room_spec');
+    Route::get('/room_spec/edit/{id}', 'edit')->name('edit_room_spec');
+    Route::put('/room_spec/edit/{id}', 'update');
+    Route::delete('/room_spec/delete/{id}', 'destroy')->name('delete_room_spec');
+});
 
 // === GUEST === //
 Route::controller(GuestController::class)->group(function () {

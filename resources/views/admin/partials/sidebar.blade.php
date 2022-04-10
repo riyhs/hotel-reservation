@@ -16,12 +16,15 @@
 
             <li class="menu-header">Master</li>
             <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
-                <a class="nav-link" href="blank.html"><i class="far fa-bookmark"></i>
+                <a class="nav-link" href={{ route('room') }}><i class="far fa-bookmark"></i>
                     <span>Room</span>
                 </a>
             </li>
-            <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
-                <a class="nav-link" href="blank.html"><i class="far fa-address-book"></i>
+            <li
+                class="
+                    {{ request()->is('room_spec') ? 'active' : '' }}
+                    {{ request()->is('room_spec/create') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('room_spec') }}"><i class="far fa-address-book"></i>
                     <span>Room Spec</span>
                 </a>
             </li>

@@ -14,7 +14,8 @@ class RoomSpecController extends Controller
      */
     public function index()
     {
-        //
+        $roomSpecs = RoomSpec::orderBy('id', 'desc')->get();
+        return view('admin.room_spec', compact('roomSpecs'));
     }
 
     /**
@@ -27,6 +28,11 @@ class RoomSpecController extends Controller
         //
     }
 
+    public function view_create()
+    {
+        return view('admin.room_spec_create');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -35,7 +41,17 @@ class RoomSpecController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string'],
+        ]);
+
+        $roomSpec = RoomSpec::create([
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+
+        return redirect("room_spec")->withSuccess('Create Room Spec Success');
     }
 
     /**
@@ -44,9 +60,9 @@ class RoomSpecController extends Controller
      * @param  \App\Models\RoomSpec  $roomSpec
      * @return \Illuminate\Http\Response
      */
-    public function show(RoomSpec $roomSpec)
+    public function show()
     {
-        //
+        // 
     }
 
     /**
@@ -55,9 +71,11 @@ class RoomSpecController extends Controller
      * @param  \App\Models\RoomSpec  $roomSpec
      * @return \Illuminate\Http\Response
      */
-    public function edit(RoomSpec $roomSpec)
+    public function edit($id)
     {
-        //
+        $roomSpec = RoomSpec::find($id);
+
+        return view('admin.room_spec_edit', compact('roomSpec'));
     }
 
     /**
@@ -67,9 +85,19 @@ class RoomSpecController extends Controller
      * @param  \App\Models\RoomSpec  $roomSpec
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RoomSpec $roomSpec)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string'],
+        ]);
+
+        $roomSpec = RoomSpec::find($id);
+        $roomSpec->name = $request->name;
+        $roomSpec->description = $request->description;
+        $roomSpec->update();
+
+        return redirect('room_spec')->withSuccess('RoomSpec Updated Successfully');
     }
 
     /**
@@ -78,8 +106,10 @@ class RoomSpecController extends Controller
      * @param  \App\Models\RoomSpec  $roomSpec
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RoomSpec $roomSpec)
+    public function destroy($id)
     {
-        //
+        $roomSpec = RoomSpec::find($id);
+        $roomSpec->delete();
+        return redirect('room_spec')->withSuccess('Student Deleted Successfully');
     }
 }
