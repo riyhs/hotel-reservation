@@ -1,0 +1,64 @@
+DATABASE : db_hotel
+
+TABLE :
+1. tb_user
+	id : INT (Auto Increment)
+	username : varchar (UNIQUE)
+	password : varchar (lebih baik di hash)
+	email : varchar
+	date : date
+	role : enum [admin, resepsionis]
+
+2. tb_room
+	id
+	room_people
+	room_no
+	room_price
+	room_photo
+	room_amount
+	room_used
+	room_spec_id
+3. tb_room_spec
+	id
+	spec_name
+	spec_description
+4. tb_room_facility
+	id
+	name_facility
+	id_room_spec
+
+5. tb_facility_hotel
+	id
+	name_facility
+6. tb_reservasi
+	id
+	nama_pemesan
+	email_pemesan
+	no_handphone_pemesan
+	nama_tamu
+	room_type
+	room_jumlah
+	check_in_date
+	check_out_date
+	keterangan
+7. tb_guest
+	guest_username
+	guest_password
+	guest_name
+	guest_notelp
+	guest_address
+	guest_gender
+	guest_age
+
+
+0. User login / user registration (optional)
+1. User cari kamar (filtering)
+2. Response kamar with data
+3. User pilih kamar (session)
+4. Masukan data yang dibutuhkan (session)
+5. Save transaction, show print
+
+TODO: 
+- buat migration
+- buat crud kamar + gambar
+- buat crud transaksi (simple) + print
