@@ -27,7 +27,10 @@ TABLE :
 
 5. tb_facility_hotel
 	id
-	name_facility
+	name
+	images
+	description
+
 6. tb_reservasi
 	id
 	nama_pemesan

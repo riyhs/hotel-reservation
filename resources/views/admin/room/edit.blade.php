@@ -8,13 +8,15 @@
                         <h4>Edit Room</h4>
                     </div>
                     <div class="card-body">
-                        <form id="room_form" method="POST" action="{{ route('save_room') }}"
+                        <form id="room_form" method="POST" action="{{ route('edit_room', $room->id) }}"
                             enctype="multipart/form-data">
                             @csrf
+                            @method('put')
+
                             <div class="form-group">
                                 <label>Room Name</label>
                                 <input type="text" class="form-control" name="name" placeholder="Room name"
-                                    value={{ $room->name }} maxlength="255" required>
+                                    value="{{ $room->name }}" maxlength="255" required>
                             </div>
 
                             <div class="form-group">
@@ -22,7 +24,7 @@
                                 <input type="number" class="form-control" name="price" placeholder="Price" maxlength="9"
                                     required
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                    value={{ $room->price }}>
+                                    value="{{ $room->price }}">
                             </div>
 
                             <div class="form-group">
@@ -30,7 +32,7 @@
                                 <input type="number" class="form-control" name="amount"
                                     placeholder="How much room available" maxlength="4" required
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                    value={{ $room->amount }}>
+                                    value="{{ $room->amount }}">
                             </div>
 
                             <div class="form-group">

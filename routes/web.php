@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\RoomSpecController;
 use App\Http\Controllers\RoomFacilityController;
+use App\Http\Controllers\HotelFacilityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +69,15 @@ Route::controller(RoomFacilityController::class)->group(function () {
     Route::get('/room_facility/edit/{id}', 'edit')->name('edit_room_facility');
     Route::put('/room_facility/edit/{id}', 'update');
     Route::delete('/room_facility/delete/{id}', 'destroy')->name('delete_room_facility');
+});
+
+Route::controller(HotelFacilityController::class)->group(function () {
+    Route::get('/hotel_facility', 'index')->name('hotel_facility');
+    Route::get('/hotel_facility/create', 'create')->name('create_hotel_facility');
+    Route::post('/hotel_facility/create', 'store')->name('save_hotel_facility');
+    Route::get('/hotel_facility/edit/{id}', 'edit')->name('edit_hotel_facility');
+    Route::put('/hotel_facility/edit/{id}', 'update');
+    Route::delete('/hotel_facility/delete/{id}', 'destroy')->name('delete_hotel_facility');
 });
 
 // === GUEST === //

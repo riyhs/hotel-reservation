@@ -28,8 +28,8 @@
                     <span>Room Spec</span>
                 </a>
             </li>
-            <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
-                <a class="nav-link" href="blank.html"><i class="far fa-bell"></i>
+            <li class="{{ request()->is('hotel_facility') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('hotel_facility') }}"><i class="far fa-bell"></i>
                     <span>Hotel Facility</span>
                 </a>
             </li>
