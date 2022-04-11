@@ -38,8 +38,8 @@
                     <span>Reservation</span>
                 </a>
             </li>
-            <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
-                <a class="nav-link" href="blank.html"><i class="far fa-address-book"></i>
+            <li class="{{ request()->is('guest') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('guest') }}"><i class="far fa-address-book"></i>
                     <span>Guest</span>
                 </a>
             </li>

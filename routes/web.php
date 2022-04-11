@@ -97,6 +97,9 @@ Route::controller(GuestController::class)->group(function () {
     Route::get('/login', 'loginView');
     Route::post('/login', 'login')->name('login');
     Route::get('/logout', 'logout');
+    // ADMIN
+    Route::get('/guest', 'indexAdmin')->name('guest');
+    Route::delete('/guest/delete/{id}', 'destroy')->name('delete_guest');
 });
 
 Route::get('/home', [GuestController::class, 'home']);

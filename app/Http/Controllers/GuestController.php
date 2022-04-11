@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Session;
 
 class GuestController extends Controller
 {
-    // protected $guard = 'guest';
-
     public function index()
     {
         return view('guest.auth.register');
@@ -75,5 +73,20 @@ class GuestController extends Controller
         Auth::guard('guest')->logout();
 
         return Redirect('login');
+    }
+
+    // ADMIN
+
+    public function indexAdmin()
+    {
+        $guests = Guest::orderBy('id', 'desc')->get();
+        return view('admin.guest.index', compact('guests'));
+    }
+
+    public function destroy($id)
+    {
+        $room = Guest::find($id);
+        $room->delete();
+        return redirect('guest')->withSuccess('Guest Deleted Successfully');
     }
 }
