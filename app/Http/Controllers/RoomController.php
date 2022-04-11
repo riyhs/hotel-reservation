@@ -41,10 +41,19 @@ class RoomController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'roomSpec' => ['required'],
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         ]);
+
+        $imageName = '';
+
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images/room'), $imageName);
+        }
 
         $room = Room::create([
             'name' => $request->name,
+            'image' => $imageName,
             'price' => $request->price,
             'amount' => $request->amount,
             'used' => 0,
@@ -94,10 +103,13 @@ class RoomController extends Controller
 
         $room = Room::find($id);
         $room->name = $request->name;
-        $room->description = $request->description;
+        $room->price = $request->price;
+        $room->amount = $request->amount;
+        $room->spec_id = $request->spec_id;
+        $room->image = $request->image;
         $room->update();
 
-        return redirect('room')->withSuccess('Room Updated Successfully');
+        return redirect('room/edit/' . $id)->withSuccess('Room Updated Successfully');
     }
 
     /**
