@@ -29,11 +29,6 @@
                 </a>
             </li>
             <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
-                <a class="nav-link" href="blank.html"><i class="far fa-address-book"></i>
-                    <span>Room Facility</span>
-                </a>
-            </li>
-            <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
                 <a class="nav-link" href="blank.html"><i class="far fa-bell"></i>
                     <span>Hotel Facility</span>
                 </a>
