@@ -23,18 +23,18 @@
                                 <th>Notes</th>
                                 <th class="text-center">Action</th>
                             </tr>
-
                             @foreach ($reservations as $reservation)
                                 <tr>
                                     <td>{{ $reservation->id }}</td>
+                                    <td>{{ $reservation->reserver->name }}</td>
                                     <td>{{ $reservation->guest }}</td>
-                                    <td>{{ $reservation->guest }}</td>
-                                    <td>{{ $reservation->guest }}</td>
-                                    <td>{{ $reservation->guest }}</td>
-                                    <td>{{ $reservation->guest }}</td>
-                                    <td>{{ $reservation->guest }}</td>
-                                    <td>{{ $reservation->guest }}</td>
-                                    <td>{{ $reservation->guest }}</td>
+                                    <td>{{ $reservation->email }}</td>
+                                    <td>{{ $reservation->phone }}</td>
+                                    <td>{{ $reservation->room_amount }}</td>
+                                    <td>{{ $reservation->room->name }}</td>
+                                    <td>{{ $reservation->check_in }}</td>
+                                    <td>{{ $reservation->check_out }}</td>
+                                    <td>{{ $reservation->notes }}</td>
                                     <td>{{ $reservation->guest }}</td>
                                     <td class="text-center">
                                         <a href="{{ route('edit_reservation', ['id' => $reservation->id]) }}"

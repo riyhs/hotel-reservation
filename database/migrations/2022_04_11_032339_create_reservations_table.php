@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('guest');
-            $table->string('room_amount');
+            $table->integer('room_amount');
             $table->datetime('check_in');
             $table->datetime('check_out');
             $table->text('notes')->nullable();

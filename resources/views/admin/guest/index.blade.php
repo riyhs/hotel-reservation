@@ -13,6 +13,8 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
+                                <th>E-Mail</th>
+                                <th>Phone</th>
                                 <th class="text-center">Action</th>
                             </tr>
 
@@ -20,9 +22,9 @@
                                 <tr>
                                     <td>{{ $guest->id }}</td>
                                     <td>{{ $guest->name }}</td>
+                                    <td>{{ $guest->email }}</td>
+                                    <td>{{ $guest->phone }}</td>
                                     <td class="text-center">
-
-
                                         <form action="{{ route('delete_guest', ['id' => $guest->id]) }}" method="POST"
                                             style="display: inline-block;">
                                             @csrf

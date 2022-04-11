@@ -13,9 +13,14 @@ class Reservation extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'check_in' => 'datetime',
+        'check_out' => 'datetime',
+    ];
+
     public function reserver()
     {
-        return $this->belongsTo(Guest::class);
+        return $this->belongsTo(Guest::class, 'guest_id');
     }
 
     public function room()

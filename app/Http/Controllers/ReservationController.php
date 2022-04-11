@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Room;
+use App\Models\Guest;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class ReservationController extends Controller
 {
@@ -25,7 +28,10 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        return view('admin.reservation.create');
+        $reservers = Guest::orderBy('id', 'desc')->get();
+        $rooms = Room::orderBy('id', 'desc')->get();
+
+        return view('admin.reservation.create', compact('reservers', 'rooms'));
     }
 
     /**
@@ -36,7 +42,24 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required'],
+            'room' => ['required'],
+        ]);
+
+        $reservation = Reservation::create([
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'guest' => $request->guest,
+            'room_amount' => $request->amount,
+            'check_in' => $request->checkin,
+            'check_out' => $request->checkout,
+            'notes' => $request->notes,
+            'room_id' => $request->room,
+            'guest_id' => $request->name,
+        ]);
+
+        return redirect("reservation")->withSuccess('Reservation created successfully');
     }
 
     /**
@@ -56,9 +79,13 @@ class ReservationController extends Controller
      * @param  \App\Models\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Reservation $reservation)
+    public function edit($id)
     {
-        //
+        $reservation = Reservation::find($id);
+        $reservers = Guest::orderBy('id', 'desc')->get();
+        $rooms = Room::orderBy('id', 'desc')->get();
+
+        return view('admin.reservation.edit', compact('reservation', 'reservers', 'rooms'));
     }
 
     /**
@@ -68,9 +95,27 @@ class ReservationController extends Controller
      * @param  \App\Models\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reservation $reservation)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => ['required'],
+            'room' => ['required'],
+        ]);
+
+        $reservation = Reservation::find($id);
+
+        $reservation->email = $request->email;
+        $reservation->phone = $request->phone;
+        $reservation->guest = $request->guest;
+        $reservation->room_amount = $request->amount;
+        $reservation->check_in = $request->checkin;
+        $reservation->check_out = $request->checkout;
+        $reservation->notes = $request->notes;
+        $reservation->room_id = $request->room;
+        $reservation->guest_id = $request->name;
+        $reservation->update();
+
+        return redirect("reservation")->withSuccess('Reservation updated successfully');
     }
 
     /**
