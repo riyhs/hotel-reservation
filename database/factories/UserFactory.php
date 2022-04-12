@@ -20,6 +20,7 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
+            'role' => 'receptionist',
             'email' => 'riyaldi.dev@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('kepo'),
