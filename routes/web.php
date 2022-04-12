@@ -33,17 +33,12 @@ Route::controller(UserController::class)->group(function () {
     Route::get('/admin', 'loginView');
     Route::post('/admin', 'login')->name('admin');
     Route::get('/admin-logout', 'logout');
+    Route::get('/dashboard', 'dashboard')->name('dashboard');
 });
 
 Route::get('/admin', function () {
     return view('admin/auth/login');
 });
-
-Route::get('/dashboard', [UserController::class, 'dashboard']);
-
-Route::get('/room', function () {
-    return view('admin/room');
-})->name('room');
 
 Route::controller(RoomSpecController::class)->group(function () {
     Route::get('/room_spec', 'index')->name('room_spec');

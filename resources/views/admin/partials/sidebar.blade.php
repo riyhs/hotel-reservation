@@ -9,7 +9,7 @@
         <ul class="sidebar-menu">
             <li class="menu-header">Home</li>
             <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
-                <a class="nav-link" href="blank.html"><i class="far fa-square"></i>
+                <a class="nav-link" href="{{ route('dashboard') }}"><i class="far fa-square"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
@@ -39,7 +39,7 @@
                 </a>
             </li>
             <li class="{{ request()->is('guest') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('guest') }}"><i class="far fa-address-book"></i>
+                <a class="nav-link" href="{{ route('guest') }}"><i class="fas fa-users"></i>
                     <span>Guest</span>
                 </a>
             </li>
