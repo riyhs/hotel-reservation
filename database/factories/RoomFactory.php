@@ -21,7 +21,7 @@ class RoomFactory extends Factory
             'price' => $this->faker->numberBetween($min = 100, $max = 990) * 1000,
             'amount' => $this->faker->numberBetween($min = 10, $max = 2000),
             'used' => 8,
-            'spec_id' => $this->faker->numberBetween($min = 1, $max = 10),
+            'spec_id' => $this->faker->numberBetween($min = 1, $max = 4),
         ];
     }
 }
