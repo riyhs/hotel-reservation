@@ -14,8 +14,8 @@
                         <div class="book_tabel_item">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input type="text" name="guest" class="form-control" placeholder="Guest Name"
-                                        required="" form="form_booking" style="color: white">
+                                    <input type="text" name="guest" class="form-control" placeholder="Guest Name" required
+                                        style="color: white" value="{{ auth()->guard('guest')->user()->name }}">
                                 </div>
                             </div>
 
@@ -64,11 +64,20 @@
                             <div class="input-group">
                                 <select class="wide" form="form_booking" name="room_id">
                                     <option data-display="Room Type">Room Type</option>
-
-                                    @foreach ($rooms as $room)
-                                        <option value="{{ $room->id }}" style="color: white">{{ $room->name }}
-                                        </option>
-                                    @endforeach
+                                    @if (request()->has('room'))
+                                        @foreach ($rooms as $room)
+                                            <option value="{{ $room->id }}" style="color: white"
+                                                {{ $room->id == request()->query('room') ? 'selected' : '' }}>
+                                                {{ $room->name }}
+                                            </option>
+                                        @endforeach
+                                    @else
+                                        @foreach ($rooms as $room)
+                                            <option value="{{ $room->id }}" style="color: white">
+                                                {{ $room->name }}
+                                            </option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                             <div class="form-group">

@@ -158,7 +158,6 @@ class ReservationController extends Controller
     public function guestCreate()
     {
         $rooms = Room::orderBy('id', 'desc')->get();
-
         return view('create_booking', compact('rooms'));
     }
 

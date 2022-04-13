@@ -8,6 +8,7 @@ use App\Http\Controllers\RoomSpecController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RoomFacilityController;
 use App\Http\Controllers\HotelFacilityController;
+use Illuminate\Foundation\Auth\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +20,6 @@ use App\Http\Controllers\HotelFacilityController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
 
 Route::get('/invoice', function () {
     return view('invoice');
@@ -43,6 +40,8 @@ Route::controller(GuestController::class)->group(function () {
 Route::controller(UserController::class)->group(function () {
     // Route::get('/register', 'index');
     // Route::post('/register', 'store')->name('register');
+    Route::get('/', 'welcome')->name('home');
+
     Route::get('/admin', 'loginView');
     Route::post('/admin', 'login')->name('admin');
     Route::get('/admin-logout', 'logout');

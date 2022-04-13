@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Room;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\HotelFacility;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\UpdateUserRequest;
 
 class UserController extends Controller
 {
@@ -121,5 +123,12 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    public function welcome()
+    {
+        $rooms = Room::orderBy('id', 'ASC')->take(8)->get();
+        $hotelFacilities = HotelFacility::orderBy('id', 'ASC')->take(6)->get();
+        return view('welcome', compact('rooms', 'hotelFacilities'));
     }
 }
