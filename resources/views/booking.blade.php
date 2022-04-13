@@ -8,18 +8,28 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Reserver Name</th>
+                        <th scope="col">Check In</th>
+                        <th scope="col">Check Out</th>
+                        <th scope="col">Room Amount</th>
+                        <th scope="col">Room Type</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($reservations as $reservation)
                         <tr>
                             <th scope="row">{{ $reservation->id }}</th>
-                            <td>{{ $reservation->reserver->name }}</td>
-                            <td>{{ $reservation->room->name }}</td>
                             <td>{{ $reservation->guest }}</td>
+                            <td>{{ $reservation->check_in }}</td>
+                            <td>{{ $reservation->check_out }}</td>
+                            <td>{{ $reservation->room_amount }}</td>
+                            <td>{{ $reservation->room->name }}</td>
+                            <td>
+                                <a href="{{ route('print_ticket', [$reservation->id]) }}"
+                                    class="genric-btn info circle small">Reservation Ticket
+                                </a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

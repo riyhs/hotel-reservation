@@ -21,10 +21,6 @@ use Illuminate\Foundation\Auth\User;
 |
 */
 
-Route::get('/invoice', function () {
-    return view('invoice');
-});
-
 // === GUEST === //
 Route::controller(GuestController::class)->group(function () {
     Route::get('/register', 'index');
@@ -101,4 +97,5 @@ Route::controller(ReservationController::class)->group(function () {
     Route::get('/create', 'guestCreate')->name('guestCreate');
     Route::post('/create', 'guestStore')->name('guestStore');
     Route::get('/booking', 'guestIndex');
+    Route::get('/invoice/{id}', 'show')->name('print_ticket');
 });

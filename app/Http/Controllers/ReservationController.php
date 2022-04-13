@@ -65,17 +65,6 @@ class ReservationController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Reservation  $reservation
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Reservation $reservation)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Reservation  $reservation
@@ -190,5 +179,23 @@ class ReservationController extends Controller
         // dd($reservation);
 
         return redirect("/booking")->withSuccess('Reservation created successfully');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Reservation  $reservation
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $reservation = Reservation::find($id);
+        $guestId = auth()->guard('guest')->id();
+
+        if ($reservation->guest_id == $guestId) {
+            return view('invoice', compact('reservation'));
+        } else {
+            return view('booking');
+        }
     }
 }
