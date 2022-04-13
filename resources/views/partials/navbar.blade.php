@@ -16,6 +16,10 @@
                 <ul class="nav navbar-nav menu_nav ml-auto">
                     <li class="nav-item {{ request()->is('/') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ url('/') }}">Home</a></li>
+
+                    <li class="nav-item {{ request()->is('accomodation') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ url('/accomodation') }}">Accomodation</a></li>
+
                     @if (Route::has('login'))
                         @auth('guest')
                             <li class="nav-item {{ request()->is('booking') ? 'active' : '' }}"><a class="nav-link"

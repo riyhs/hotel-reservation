@@ -12,7 +12,7 @@
                         <h2>Relax Your Mind</h2>
                         <p>If you are looking at blank cassettes on the web, you may be very confused at the<br> difference
                             in price. You may see some for as low as $.17 each.</p>
-                        <a href="{{ route('guestCreate') }}" class="btn theme_btn button_hover">Get Started</a>
+                        <a href="{{ url('accomodation') }}" class="btn theme_btn button_hover">Explore Accomodations</a>
                     </div>
                 </div>
             </div>
@@ -188,7 +188,7 @@
                         </div>
                     @endforeach
 
-                    <div class="col-lg-4 col-md-6">
+                    {{-- <div class="col-lg-4 col-md-6">
                         <div class="facilities_item">
                             <h4 class="sec_h4"><i class="lnr lnr-dinner"></i>Restaurant</h4>
                             <p>Usage of the Internet is becoming more common due to rapid advancement of technology and
@@ -229,7 +229,7 @@
                             <p>Usage of the Internet is becoming more common due to rapid advancement of technology and
                                 power.</p>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </section>
@@ -245,7 +245,7 @@
                             <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct
                                 standards especially in the workplace. That’s why it’s crucial that, as women, our behavior
                                 on the job is beyond reproach. inappropriate behavior is often laughed.</p>
-                            <a href="#" class="button_hover theme_btn_two">Request Custom Price</a>
+                            <a href="{{ url('accomodation') }}" class="button_hover theme_btn_two">Let's Explore</a>
                         </div>
                     </div>
                     <div class="col-md-6">

@@ -41,6 +41,7 @@ Route::controller(UserController::class)->group(function () {
     // Route::get('/register', 'index');
     // Route::post('/register', 'store')->name('register');
     Route::get('/', 'welcome')->name('home');
+    Route::get('/accomodation', 'accomodation');
 
     Route::get('/admin', 'loginView');
     Route::post('/admin', 'login')->name('admin');

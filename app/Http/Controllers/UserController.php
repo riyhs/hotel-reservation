@@ -131,4 +131,10 @@ class UserController extends Controller
         $hotelFacilities = HotelFacility::orderBy('id', 'ASC')->take(6)->get();
         return view('welcome', compact('rooms', 'hotelFacilities'));
     }
+
+    public function accomodation()
+    {
+        $rooms = Room::orderBy('price', 'DESC')->take(12)->get();
+        return view('accomodation', compact('rooms'));
+    }
 }
