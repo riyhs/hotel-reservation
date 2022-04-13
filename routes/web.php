@@ -23,8 +23,26 @@ use App\Http\Controllers\HotelFacilityController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/hotel', function () {
-    return view('hotel');
+
+// === GUEST === //
+Route::controller(GuestController::class)->group(function () {
+    Route::get('/register', 'index');
+    Route::post('/register', 'store')->name('register');
+    Route::get('/login', 'loginView');
+    Route::post('/login', 'login')->name('login');
+    Route::get('/logout', 'logout');
+
+    Route::get('/booking', function () {
+        return view('booking');
+    });
+
+    Route::get('/create', function () {
+        return view('create_booking');
+    });
+
+    // ADMIN
+    Route::get('/guest', 'indexAdmin')->name('guest');
+    Route::delete('/guest/delete/{id}', 'destroy')->name('delete_guest');
 });
 
 Route::controller(UserController::class)->group(function () {
@@ -84,17 +102,3 @@ Route::controller(ReservationController::class)->group(function () {
     Route::put('/reservation/edit/{id}', 'update');
     Route::delete('/reservation/delete/{id}', 'destroy')->name('delete_reservation');
 });
-
-// === GUEST === //
-Route::controller(GuestController::class)->group(function () {
-    Route::get('/register', 'index');
-    Route::post('/register', 'store')->name('register');
-    Route::get('/login', 'loginView');
-    Route::post('/login', 'login')->name('login');
-    Route::get('/logout', 'logout');
-    // ADMIN
-    Route::get('/guest', 'indexAdmin')->name('guest');
-    Route::delete('/guest/delete/{id}', 'destroy')->name('delete_guest');
-});
-
-Route::get('/home', [GuestController::class, 'home']);
