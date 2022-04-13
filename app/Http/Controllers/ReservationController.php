@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
 use App\Models\Room;
 use App\Models\Guest;
-use App\Models\RoomSpec;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
@@ -19,7 +18,19 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $reservations = Reservation::orderBy('id', 'desc')->get();
+        if (request()->has('query')) {
+            $reservations = Reservation::whereRelation('reserver', 'name', 'like', "%" . request()->query('query') . "%")->get();
+        } else if (request()->has('daterange')) {
+            $range = explode(" - ", request()->query('daterange'));;
+
+            $start_date = DateTime::createFromFormat('m/d/Y', $range[0])->format('Y-m-d');
+            $end_date = DateTime::createFromFormat('m/d/Y', $range[1])->format('Y-m-d');
+
+            $reservations = Reservation::whereBetween('created_at', [$start_date, $end_date])->get();
+        } else {
+            $reservations = Reservation::orderBy('id', 'desc')->get();
+        }
+
         return view('admin.reservation.index', compact('reservations'));
     }
 
