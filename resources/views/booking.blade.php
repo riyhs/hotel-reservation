@@ -2,6 +2,8 @@
 @section('content')
     <section class="banner_area" style="min-height: 100vh; padding-top: 80px">
         <div class="container" style="padding-top: 32px">
+            <h2 class="title_w mb-4 mt-4">Booking History</h2>
+
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -12,24 +14,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+                    @foreach ($reservations as $reservation)
+                        <tr>
+                            <th scope="row">{{ $reservation->id }}</th>
+                            <td>{{ $reservation->reserver->name }}</td>
+                            <td>{{ $reservation->room->name }}</td>
+                            <td>{{ $reservation->guest }}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

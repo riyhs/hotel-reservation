@@ -12,10 +12,10 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                 <ul class="nav navbar-nav menu_nav ml-auto">
-                    <li class="nav-item active"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url('/booking') }}">Booking</a></li>
+                    <li class="nav-item {{ request()->is('/') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ url('/') }}">Home</a></li>
+                    <li class="nav-item {{ request()->is('booking') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ url('/booking') }}">Booking</a></li>
                     @if (Route::has('login'))
                         @auth('guest')
                             <li class="nav-item"><a href="{{ url('/logout') }}" class="nav-link">Log Out</a>

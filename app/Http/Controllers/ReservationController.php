@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Room;
 use App\Models\Guest;
+use App\Models\RoomSpec;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
@@ -127,5 +129,67 @@ class ReservationController extends Controller
     public function destroy(Reservation $reservation)
     {
         //
+    }
+
+    // GUEST
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function guestIndex()
+    {
+        $id = Auth::guard('guest')->id();
+        $reservations = Reservation::where('guest_id', $id)->orderBy('id', 'desc')->get();
+
+        // dd($reservations);
+        // dd($id);
+
+        return view('booking', compact('reservations'));
+    }
+
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function guestCreate()
+    {
+        $rooms = Room::orderBy('id', 'desc')->get();
+
+        return view('create_booking', compact('rooms'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function guestStore(Request $request)
+    {
+        $request->validate([
+            'room_id' => ['required'],
+        ]);
+
+        // dd($request);
+
+        $reservation = Reservation::create([
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'guest' => $request->guest,
+            'room_amount' => $request->amount,
+            'check_in' => $request->checkin . ':00',
+            'check_out' => $request->checkout . ':00',
+            'notes' => $request->notes,
+            'room_id' => $request->room_id,
+            'guest_id' => $request->guest_id,
+        ]);
+
+        // dd($reservation);
+
+        return redirect("/booking")->withSuccess('Reservation created successfully');
     }
 }

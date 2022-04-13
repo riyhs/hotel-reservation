@@ -4,59 +4,89 @@
         <div class="container" style="padding-top: 32px">
             <h2 class="title_w mb-4 mt-4">Book your hapiness 🙂</h2>
 
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="book_tabel_item">
-                        <div class="form-group">
-                            <div class='input-group date' id='datetimepicker11'>
-                                <input type='text' class="form-control" placeholder="Arrival Date" />
-                                <span class="input-group-addon">
-                                    <i class="fa fa-calendar" aria-hidden="true"></i>
-                                </span>
+            <form id="form_booking" action="{{ route('guestStore') }}" method="POST">
+                @csrf
+
+                <input type="hidden" name="guest_id" value="{{ auth()->guard('guest')->id() }}">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="book_tabel_item">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" name="guest" class="form-control" placeholder="Guest Name"
+                                        required="" form="form_booking" style="color: white">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class='input-group date' id='datetimepicker1'>
-                                <input type='text' class="form-control" placeholder="Departure Date" />
-                                <span class="input-group-addon">
-                                    <i class="fa fa-calendar" aria-hidden="true"></i>
-                                </span>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="number" name="phone" class="form-control" placeholder="Phone Number"
+                                        required="" form="form_booking" style="color: white">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="email" name="email" class="form-control" placeholder="E-Mail"
+                                        form="form_booking" style="color: white">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="number" name="amount" class="form-control" placeholder="Room Amount"
+                                        form="form_booking" style="color: white">
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="book_tabel_item">
-                        <div class="form-group">
+                    <div class="col-md-6">
+                        <div class="book_tabel_item">
+                            <div class="form-group">
+                                <div class='input-group date' id='datetimepicker11'>
+                                    <input type='text' class="form-control" placeholder="Arrival Date" form="form_booking"
+                                        name="checkin" style="color: white" />
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <input type='text' class="form-control" placeholder="Departure Date"
+                                        form="form_booking" name="checkout" style="color: white" />
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                            </div>
                             <div class="input-group">
-                                <input type="email" name="number" class="form-control" placeholder="Room Amount"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Room Amount '" required="">
+                                <select class="wide" form="form_booking" name="room_id">
+                                    <option data-display="Room Type">Room Type</option>
+
+                                    @foreach ($rooms as $room)
+                                        <option value="{{ $room->id }}" style="color: white">{{ $room->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Notes" name="notes"
+                                        form="form_booking" style="color: white">
+                                </div>
                             </div>
                         </div>
-                        <div class="input-group">
-                            <select class="wide">
-                                <option data-display="Room Type">Room Type</option>
-                                <option value="1">King Salman Spec</option>
-                                <option value="2">Lord Luhut Spec</option>
-                                <option value="3">Rakyat Jelata</option>
-                            </select>
-                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="book_tabel_item">
-                        <div class="input-group">
-                            <select class="wide">
-                                <option data-display="Child">Number of Rooms</option>
-                                <option value="1">Room 01</option>
-                                <option value="2">Room 02</option>
-                                <option value="3">Room 03</option>
-                            </select>
-                        </div>
-                        <a class="book_now_btn button_hover" href="#">Book Now</a>
-                    </div>
-                </div>
-            </div>
+
+                <button type="submit" form="form_booking" class="book_now_btn button_hover mt-4">
+                    Book Now
+                </button>
+
+            </form>
+
         </div>
     </section>
 @endsection()

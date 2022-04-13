@@ -22,6 +22,10 @@ use App\Http\Controllers\HotelFacilityController;
 
 Route::get('/', function () {
     return view('welcome');
+})->name('home');
+
+Route::get('/invoice', function () {
+    return view('invoice');
 });
 
 // === GUEST === //
@@ -31,15 +35,6 @@ Route::controller(GuestController::class)->group(function () {
     Route::get('/login', 'loginView');
     Route::post('/login', 'login')->name('login');
     Route::get('/logout', 'logout');
-
-    Route::get('/booking', function () {
-        return view('booking');
-    });
-
-    Route::get('/create', function () {
-        return view('create_booking');
-    });
-
     // ADMIN
     Route::get('/guest', 'indexAdmin')->name('guest');
     Route::delete('/guest/delete/{id}', 'destroy')->name('delete_guest');
@@ -101,4 +96,9 @@ Route::controller(ReservationController::class)->group(function () {
     Route::get('/reservation/edit/{id}', 'edit')->name('edit_reservation');
     Route::put('/reservation/edit/{id}', 'update');
     Route::delete('/reservation/delete/{id}', 'destroy')->name('delete_reservation');
+
+    // GUEST
+    Route::get('/create', 'guestCreate')->name('guestCreate');
+    Route::post('/create', 'guestStore')->name('guestStore');
+    Route::get('/booking', 'guestIndex');
 });
