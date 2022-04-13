@@ -46,7 +46,7 @@ class GuestController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::guard('guest')->attempt($credentials)) {
-            return redirect()->intended('home')
+            return redirect()->intended('/')
                 ->withSuccess('Signed in');
         }
 
@@ -58,21 +58,12 @@ class GuestController extends Controller
         return view('guest.auth.login');
     }
 
-    public function home()
-    {
-        if (Auth::guard('guest')->check()) {
-            return view('home');
-        }
-
-        return redirect("login")->withSuccess('You are not allowed to access');
-    }
-
     public function logout()
     {
         Session::flush();
         Auth::guard('guest')->logout();
 
-        return Redirect('login');
+        return redirect('/');
     }
 
     // ADMIN
