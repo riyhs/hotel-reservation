@@ -2,7 +2,7 @@
 @section('content')
     <section class="section">
         <div class="row">
-            <div class="col-12 col-md-8 col-lg-8">
+            <div class="col-12 col-md-7 col-lg-7">
                 <div class="card">
                     <div class="card-header" style="width: 100%;">
                         <h4>Edit Room Spec</h4>
@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-4 col-lg-4">
+            <div class="col-12 col-md-5 col-lg-5">
                 <div class="card">
                     <div class="card-header">
                         <h4>Room Spec Facility</h4>
@@ -58,12 +58,18 @@
                                 @foreach ($facilities as $facility)
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         {{ $facility->name }}
-                                        <form action="{{ route('delete_room_facility', ['id' => $facility->id]) }}"
-                                            method="POST" style="display: inline-block;">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
+
+                                        <div>
+                                            <a href="{{ route('edit_room_facility', $facility->id) }}"
+                                                class="btn btn-info mr-2">Edit</a>
+
+                                            <form action="{{ route('delete_room_facility', ['id' => $facility->id]) }}"
+                                                method="POST" style="display: inline-block;">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </div>
                                     </li>
                                 @endforeach
                             </ul>

@@ -87,7 +87,6 @@ Route::controller(HotelFacilityController::class)->group(function () {
 
 Route::controller(ReservationController::class)->group(function () {
     Route::get('/reservation', 'index')->name('reservation');
-    // Route::get('/reservation', 'search')->name('search');
     Route::get('/reservation/create', 'create')->name('create_reservation');
     Route::post('/reservation/create', 'store')->name('save_reservation');
     Route::get('/reservation/edit/{id}', 'edit')->name('edit_reservation');

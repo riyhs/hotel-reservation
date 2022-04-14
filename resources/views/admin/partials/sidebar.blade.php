@@ -46,11 +46,6 @@
                         <span>Reservation</span>
                     </a>
                 </li>
-                <li class="{{ request()->is('guest') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('guest') }}"><i class="fas fa-users"></i>
-                        <span>Guest</span>
-                    </a>
-                </li>
             @endif
         </ul>
     </aside>

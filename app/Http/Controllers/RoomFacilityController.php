@@ -65,9 +65,10 @@ class RoomFacilityController extends Controller
      * @param  \App\Models\RoomFacility  $roomFacility
      * @return \Illuminate\Http\Response
      */
-    public function edit(RoomFacility $roomFacility)
+    public function edit($id)
     {
-        //
+        $roomFacility = RoomFacility::find($id);
+        return view('admin.room_facility.edit', compact('roomFacility'));
     }
 
     /**
@@ -77,9 +78,17 @@ class RoomFacilityController extends Controller
      * @param  \App\Models\RoomFacility  $roomFacility
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RoomFacility $roomFacility)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+        ]);
+
+        $roomFacility = RoomFacility::find($id);
+        $roomFacility->name = $request->name;
+        $roomFacility->update();
+
+        return redirect('/room_spec/edit/' . $roomFacility->roomSpec->id);
     }
 
     /**
