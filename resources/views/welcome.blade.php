@@ -95,10 +95,10 @@
                     <h2 class="title_color">Hotel Accomodation</h2>
                     <p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast, </p>
                 </div>
-                <div class="row mb_30">
+                <div class="row mb_30 text-center">
 
                     @foreach ($rooms as $room)
-                        <div class="col-lg-3 col-sm-6">
+                        <div class="col-lg-4 col-sm-6" style="margin-bottom: 32px">
                             <div class="accomodation_item text-center">
                                 <div class="hotel_img">
                                     <img src="{{ asset('images/room' . '/' . $room->image) }}"
@@ -106,64 +106,16 @@
                                     <a href="{{ route('guestCreate', ['room' => $room->id]) }}"
                                         class="btn theme_btn button_hover">Book Now</a>
                                 </div>
-                                <h4 class="sec_h4">{{ $room->name }}</h4>
+                                <h2 class="sec_h4" style="font-size: 24px !important">{{ $room->name }}</h2>
+                                <h4 class="sec_h4">{{ $room->roomSpec->name }}</h4>
                                 <h5>Rp. {{ $room->price }}<small>/night</small></h5>
                             </div>
                         </div>
                     @endforeach
+                </div>
 
-                    {{-- <div class="col-lg-3 col-sm-6">
-                        <div class="accomodation_item text-center">
-                            <div class="hotel_img">
-                                <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                                    alt="">
-                                <a href="#" class="btn theme_btn button_hover">Book Now</a>
-                            </div>
-                            <a href="#">
-                                <h4 class="sec_h4">Double Deluxe Room</h4>
-                            </a>
-                            <h5>$250<small>/night</small></h5>
-                        </div>
-                    </div> --}}
-                    {{-- <div class="col-lg-3 col-sm-6">
-                        <div class="accomodation_item text-center">
-                            <div class="hotel_img">
-                                <img src="https://images.unsplash.com/photo-1620332372374-f108c53d2e03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80"
-                                    alt="">
-                                <a href="#" class="btn theme_btn button_hover">Book Now</a>
-                            </div>
-                            <a href="#">
-                                <h4 class="sec_h4">Single Deluxe Room</h4>
-                            </a>
-                            <h5>$200<small>/night</small></h5>
-                        </div>
-                    </div> --}}
-                    {{-- <div class="col-lg-3 col-sm-6">
-                        <div class="accomodation_item text-center">
-                            <div class="hotel_img">
-                                <img src="https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                                    alt="">
-                                <a href="#" class="btn theme_btn button_hover">Book Now</a>
-                            </div>
-                            <a href="#">
-                                <h4 class="sec_h4">Honeymoon Suit</h4>
-                            </a>
-                            <h5>$750<small>/night</small></h5>
-                        </div>
-                    </div> --}}
-                    {{-- <div class="col-lg-3 col-sm-6">
-                        <div class="accomodation_item text-center">
-                            <div class="hotel_img">
-                                <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                                    alt="">
-                                <a href="#" class="btn theme_btn button_hover">Book Now</a>
-                            </div>
-                            <a href="#">
-                                <h4 class="sec_h4">Economy Double</h4>
-                            </a>
-                            <h5>$200<small>/night</small></h5>
-                        </div>
-                    </div> --}}
+                <div class="text-center" style="padding-top: 16px;">
+                    <a href="{{ url('accomodation') }}" class="btn theme_btn button_hover">Explore More Accomodations</a>
                 </div>
             </div>
         </section>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Room;
 use App\Models\User;
+use App\Models\RoomSpec;
 use Illuminate\Http\Request;
 use App\Models\HotelFacility;
 use Illuminate\Routing\Controller;
@@ -127,7 +128,7 @@ class UserController extends Controller
 
     public function welcome()
     {
-        $rooms = Room::orderBy('id', 'ASC')->take(8)->get();
+        $rooms = Room::orderBy('id', 'ASC')->take(6)->get();
         $hotelFacilities = HotelFacility::orderBy('id', 'ASC')->take(6)->get();
         return view('welcome', compact('rooms', 'hotelFacilities'));
     }
@@ -135,6 +136,7 @@ class UserController extends Controller
     public function accomodation()
     {
         $rooms = Room::orderBy('price', 'DESC')->take(12)->get();
-        return view('accomodation', compact('rooms'));
+        $roomSpecs = RoomSpec::orderBy('id', 'DESC')->get();
+        return view('accomodation', compact('rooms', 'roomSpecs'));
     }
 }
