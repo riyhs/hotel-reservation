@@ -103,8 +103,17 @@
                                 <div class="hotel_img">
                                     <img src="{{ asset('images/room' . '/' . $room->image) }}"
                                         alt="{{ $room->name }} Room Image">
-                                    <a href="{{ route('guestCreate', ['room' => $room->id]) }}"
-                                        class="btn theme_btn button_hover">Book Now</a>
+
+                                    @if (Route::has('login'))
+                                        @auth('guest')
+                                            <a href="{{ route('guestCreate', ['room' => $room->id]) }}"
+                                                class="btn theme_btn button_hover">Book Now</a>
+                                        @else
+                                            <a href="{{ url('register') }}" class="btn theme_btn button_hover">Book
+                                                Now</a>
+                                        @endauth
+                                    @endif
+
                                 </div>
                                 <h2 class="sec_h4" style="font-size: 24px !important">{{ $room->name }}</h2>
                                 <h4 class="sec_h4">{{ $room->roomSpec->name }}</h4>
