@@ -75,24 +75,20 @@
     <main class="form-signin">
         <form method="POST" action="{{ route('admin') }}">
             @csrf
-            <img class="mb-4"
-                src="https://img.okezone.com/content/2022/03/03/45/2555733/manchester-city-lupakan-harry-kane-lakukan-pendekatan-dengan-erling-haaland-tdYNo1Gesw.jpg"
-                alt="" width="102" height="77">
-            <h1 class="h3 mb-3 fw-normal">Login masseh</h1>
+            <h1 class="h3 mb-3 fw-normal">Login Dashboard</h1>
 
             <div class="form-floating">
                 <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
                     name="email">
-                <label for="floatingInput">Email address masseh</label>
+                <label for="floatingInput">Email address</label>
             </div>
             <div class="form-floating">
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
                     name="password">
-                <label for="floatingPassword">Password masseh</label>
+                <label for="floatingPassword">Password</label>
             </div>
 
-            <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Login masseh</button>
-            <p class="mt-5 mb-3 text-muted">2022</p>
+            <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Login</button>
         </form>
     </main>
 

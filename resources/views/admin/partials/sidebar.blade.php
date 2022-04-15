@@ -1,7 +1,7 @@
 <div class="main-sidebar">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="index.html">Hotel Asyik</a>
+            <a href="index.html">Hotel Asyk</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="index.html">ASYK</a>
