@@ -15,7 +15,7 @@
                             <h4>Total Admin</h4>
                         </div>
                         <div class="card-body">
-                            10
+                            {{ $totalAdmin }}
                         </div>
                     </div>
                 </div>
@@ -27,10 +27,10 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>News</h4>
+                            <h4>Total Receptionist</h4>
                         </div>
                         <div class="card-body">
-                            42
+                            {{ $totalReceptionist }}
                         </div>
                     </div>
                 </div>
@@ -42,10 +42,10 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Reports</h4>
+                            <h4>Total Room</h4>
                         </div>
                         <div class="card-body">
-                            1,201
+                            {{ $totalRoom }}
                         </div>
                     </div>
                 </div>
@@ -57,10 +57,10 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Online Users</h4>
+                            <h4>Total Reservation</h4>
                         </div>
                         <div class="card-body">
-                            47
+                            {{ $totalReservation }}
                         </div>
                     </div>
                 </div>

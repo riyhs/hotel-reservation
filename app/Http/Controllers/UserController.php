@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Room;
 use App\Models\User;
+use App\Models\Guest;
 use App\Models\RoomSpec;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 use App\Models\HotelFacility;
 use Illuminate\Routing\Controller;
@@ -67,7 +69,12 @@ class UserController extends Controller
     public function dashboard()
     {
         if (Auth::guard('web')->check()) {
-            return view('admin.dashboard');
+            $totalRoom = Room::count();
+            $totalReservation = Reservation::count();
+            $totalAdmin = User::where('role', '=', 'admin')->get()->count();
+            $totalReceptionist = User::where('role', '=', 'receptionist')->get()->count();
+
+            return view('admin.dashboard', compact('totalRoom', 'totalReceptionist', 'totalAdmin', 'totalReservation'));
         }
 
         return redirect("admin")->withSuccess('You are not allowed to access');
