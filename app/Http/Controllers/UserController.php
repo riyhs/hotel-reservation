@@ -81,6 +81,79 @@ class UserController extends Controller
         return Redirect('admin');
     }
 
+    public function receptionist()
+    {
+        $receptionists = User::where('role', 'receptionist')->orderBy('id', 'DESC')->get();
+        return view('admin.receptionist.index', compact('receptionists'));
+    }
+
+    public function createReceptionist()
+    {
+        return view('admin.receptionist.create');
+    }
+
+    public function storeReceptionist(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required'],
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'role' => 'receptionist',
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect("receptionist")->withSuccess('Receptionist created successfully');
+    }
+
+    public function editReceptionist($id)
+    {
+        $receptionist = User::find($id);
+        return view('admin.receptionist.edit', compact('receptionist'));
+    }
+
+    public function updateReceptionist(Request $request, $id)
+    {
+        $user =  User::find($id);
+
+        if ($request->email == $user->email) {
+            $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255'],
+            ]);
+        } else {
+            $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            ]);
+        }
+
+        if ($request->password != null) {
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+        } else {
+            $user->name = $request->name;
+            $user->email = $request->email;
+        }
+
+        $user->update();
+
+        return redirect("receptionist")->withSuccess('Receptionist edited successfully');
+    }
+
+    public function deleteReceptionist($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect("receptionist")->withSuccess('Receptionist deleted successfully');
+    }
+
     /**
      * Display the specified resource.
      *

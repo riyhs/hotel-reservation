@@ -43,6 +43,13 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/admin', 'login')->name('admin');
     Route::get('/admin-logout', 'logout');
     Route::get('/dashboard', 'dashboard')->name('dashboard');
+
+    Route::get('/receptionist', 'receptionist')->name('receptionist');
+    Route::get('/receptionist/create', 'createReceptionist')->name('create_receptionist');
+    Route::post('/receptionist/create', 'storeReceptionist')->name('store_receptionist');
+    Route::get('/receptionist/edit/{id}', 'editReceptionist')->name('edit_receptionist');
+    Route::put('/receptionist/create/{id}', 'updateReceptionist')->name('update_receptionist');
+    Route::delete('/receptionist/delete/{id}', 'deleteReceptionist')->name('delete_receptionist');
 });
 
 Route::get('/admin', function () {

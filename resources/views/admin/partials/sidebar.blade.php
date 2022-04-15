@@ -35,6 +35,12 @@
                         <span>Hotel Facility</span>
                     </a>
                 </li>
+                <li class="{{ request()->is('receptionist') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('receptionist') }}"><i
+                            class="fas fa-user-astronaut"></i>
+                        <span>Receptionist</span>
+                    </a>
+                </li>
                 <li class="{{ request()->is('guest') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('guest') }}"><i class="fas fa-users"></i>
                         <span>Guest</span>
