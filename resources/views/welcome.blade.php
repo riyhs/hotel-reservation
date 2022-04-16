@@ -117,7 +117,7 @@
                                 </div>
                                 <h2 class="sec_h4" style="font-size: 24px !important">{{ $room->name }}</h2>
                                 <h4 class="sec_h4">{{ $room->roomSpec->name }}</h4>
-                                <h5>Rp. {{ $room->price }}<small>/night</small></h5>
+                                <h5>Rp{{ number_format($room->price, 0, ',', '.') }}<small>/night</small></h5>
                             </div>
                         </div>
                     @endforeach

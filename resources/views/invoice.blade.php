@@ -94,17 +94,24 @@
                                 <tr style="font-size:18px">
                                     <td>1</td>
                                     <td>{{ $reservation->room->name }}</td>
-                                    <td class="text-center">{{ $reservation->room->price }}</td>
+                                    <td class="text-center">
+                                        {{ 'Rp' . number_format($reservation->room->price, 0, ',', '.') }}</td>
                                     <td class="text-center">{{ $reservation->room_amount }}</td>
                                     <td class="text-center">{{ $reservation->check_in }}</td>
                                     <td class="text-center">{{ $reservation->check_out }}</td>
                                     <td class="text-right">
                                         @if ($reservation->check_in->diffInDays($reservation->check_out) == 0)
-                                            {{ $reservation->room->price * $reservation->room_amount * 1 }}
+                                            {{ 'Rp' . number_format($reservation->room->price * $reservation->room_amount * 1, 0, ',', '.') }}
                                         @else
-                                            {{ $reservation->room->price *
-                                                $reservation->room_amount *
-                                                $reservation->check_in->diffInDays($reservation->check_out) }}
+                                            {{ 'Rp' .
+                                                number_format(
+                                                    $reservation->room->price *
+                                                        $reservation->room_amount *
+                                                        $reservation->check_in->diffInDays($reservation->check_out),
+                                                    0,
+                                                    ',',
+                                                    '.',
+                                                ) }}
                                         @endif
                                     </td>
                                 </tr>
@@ -114,7 +121,7 @@
                     <div class="row mt-4">
                         <div class="col-lg-8">
                             <p class="section-title"><strong>Important!</strong></p>
-                            <p class="section-lead">Please come to the hotel 30 Minutes before making your reservation
+                            <p class="section-lead">Please come to the hotel 30 Minutes before making your check in
                             </p>
                         </div>
                         {{-- <div class="col-lg-4 text-right">

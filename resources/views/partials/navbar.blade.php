@@ -27,11 +27,6 @@
 
                             <li class="nav-item"><a href="{{ url('/logout') }}" class="nav-link">Log Out</a>
                             </li>
-
-                            <li class="nav-item">
-                                <img class="rounded-circle profile_menu " src="img/pexels-stefan-stefancik-91227.jpg"
-                                    alt="Photo by Stefan Stefancik from Pexels" style="margin-top: 15px">
-                            </li>
                         @else
                             <li class="nav-item">
                                 <a href="{{ route('login') }}" class="nav-link">Log in</a>

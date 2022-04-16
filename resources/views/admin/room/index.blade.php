@@ -26,7 +26,7 @@
                                     <td>{{ $room->id }}</td>
                                     <td>{{ $room->name }}</td>
                                     <td>{{ $room->roomSpec->name }}</td>
-                                    <td>{{ $room->price }}</td>
+                                    <td>{{ number_format($room->price, 0, ',', '.') }}</td>
                                     <td>{{ $room->amount }}</td>
                                     <td>{{ $room->used }}</td>
                                     <td>{{ $room->amount - $room->used }}</td>
