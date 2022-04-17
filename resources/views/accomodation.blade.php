@@ -22,11 +22,11 @@
             <div class="container">
                 <div class="section_title text-center">
                     <h2 class="title_color">Special Accomodation</h2>
-                    <p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast,</p>
+                    <p>We offers a unique and unforgettable experience for guests looking to explore</p>
                 </div>
 
                 @foreach ($roomSpecs as $roomSpec)
-                    <h2 style="margin-top: 24px">Type: {{ $roomSpec->name }}</h2>
+                    <h2 class="title_color" style="margin-top: 24px">Type: {{ $roomSpec->name }}</h2>
                     <p style="max-width: 50vw; margin-bottom: 16px">{{ $roomSpec->description }}</p>
 
                     <ul style="margin-bottom: 32px">
@@ -37,7 +37,6 @@
 
                     <div class="row mb_30">
                         @foreach ($roomSpec->rooms as $room)
-                            {{-- {{ dd($room->roomSpec->facilities) }} --}}
                             <div class="col-lg-4 col-sm-6" style="margin-bottom: 32px">
                                 <div class="accomodation_item text-center">
                                     <div class="hotel_img">

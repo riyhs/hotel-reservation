@@ -2,6 +2,9 @@
 @section('content')
     <section class="section">
         <div class="row">
+            <div class="col-12 col-md-2 col-lg-2">
+
+            </div>
             <div class="col-12 col-md-8 col-lg-8">
                 <div class="card">
                     <div class="card-header" style="width: 100%;">
@@ -31,21 +34,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-4 col-lg-4">
-                <div class="card">
-                    <div class="card-header" style="width: 100%;">
-                        <h4>Add New Image</h4>
-                    </div>
-                    <div class="card-body">
-                        <img class="img-fluid mb-4"
-                            src="{{ asset('images/hotel_facility') . '/' . $hotelFacility->image }}"
-                            alt="hotel facility image">
-                        <div class="form-group">
-                            <label>Upload new image</label>
-                            <input type="file" class="form-control" name="image" form="hotel_facility_form">
-                        </div>
-                    </div>
-                </div>
+            <div class="col-12 col-md-2 col-lg-2">
+
             </div>
         </div>
 

@@ -8,10 +8,10 @@
                     data-background=""></div>
                 <div class="container">
                     <div class="banner_content text-center">
-                        <h6>Away from monotonous life</h6>
+                        <h6>Discover a unique experience of living</h6>
                         <h2>Relax Your Mind</h2>
-                        <p>If you are looking at blank cassettes on the web, you may be very confused at the<br> difference
-                            in price. You may see some for as low as $.17 each.</p>
+                        <p>Hotel Asyk offers accommodations unlike any other.<br>You'll be able to explore a new culture and
+                            experience living like a local.</p>
                         <a href="{{ url('accomodation') }}" class="btn theme_btn button_hover">Explore Accomodations</a>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
             <div class="container">
                 <div class="section_title text-center">
                     <h2 class="title_color">Hotel Accomodation</h2>
-                    <p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast, </p>
+                    <p>We offers a unique and unforgettable experience for guests looking to explore</p>
                 </div>
                 <div class="row mb_30 text-center">
 
@@ -203,9 +203,9 @@
                     <div class="col-md-6 d_flex align-items-center">
                         <div class="about_content ">
                             <h2 class="title title_color">About Us <br>Our History<br>Mission & Vision</h2>
-                            <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct
-                                standards especially in the workplace. That’s why it’s crucial that, as women, our behavior
-                                on the job is beyond reproach. inappropriate behavior is often laughed.</p>
+                            <p>A brand that offers a unique and unforgettable experience of living, where guests become the
+                                heroes of their own story. Hotel Asyk is for those who want to escape the ordinary and
+                                immerse themselves in something new. From the moment you arrive,</p>
                             <a href="{{ url('accomodation') }}" class="button_hover theme_btn_two">Let's Explore</a>
                         </div>
                     </div>
@@ -224,7 +224,7 @@
             <div class="container">
                 <div class="section_title text-center">
                     <h2 class="title_color">Testimonial from our Clients</h2>
-                    <p>The French Revolution constituted for the conscience of the dominant aristocratic class a fall from
+                    <p>Our Hotel collection is trusted by our customers for its comfort and quality.
                     </p>
                 </div>
                 <div class="testimonial_slider owl-carousel">
@@ -232,10 +232,10 @@
                         <img class="rounded-circle" src="img/pexels-stefan-stefancik-91227.jpg"
                             alt="Photo by Stefan Stefancik from Pexels">
                         <div class="media-body">
-                            <p>As conscious traveling Paupers we must always be concerned about our dear Mother Earth. If
-                                you think about it, you travel across her face, and She is the </p>
+                            <p>I would definitely recommend Hotel as a great place to stay while on vacation. I really
+                                appreciated the good service and the great memories that I made while staying there.</p>
                             <a href="#">
-                                <h4 class="sec_h4">Fanny Spencer</h4>
+                                <h4 class="sec_h4">Philipp Lackner</h4>
                             </a>
                             <div class="star">
                                 <a href="#"><i class="fa fa-star"></i></a>
@@ -250,10 +250,10 @@
                         <img class="rounded-circle" src="img/pexels-mentatdgt-937481.jpg"
                             alt="Photo by mentatdgt from Pexels">
                         <div class="media-body">
-                            <p>As conscious traveling Paupers we must always be concerned about our dear Mother Earth. If
-                                you think about it, you travel across her face, and She is the </p>
+                            <p>Everything was perfect! The service, the room... we really enjoyed our stay and will
+                                definitely come back!</p>
                             <a href="#">
-                                <h4 class="sec_h4">Fanny Spencer</h4>
+                                <h4 class="sec_h4">Jian Yang</h4>
                             </a>
                             <div class="star">
                                 <a href="#"><i class="fa fa-star"></i></a>
@@ -268,8 +268,9 @@
                         <img class="rounded-circle" src="img/pexels-daniel-xavier-1102341.jpg"
                             alt="Photo by Daniel Xavier from Pexels">
                         <div class="media-body">
-                            <p>As conscious traveling Paupers we must always be concerned about our dear Mother Earth. If
-                                you think about it, you travel across her face, and She is the </p>
+                            <p>The hotel is beautiful inside and out! The design is very modern and the hotel is very clean.
+                                The staff was very friendly and accommodating. I would definitely recommend this hotel to
+                                anyone!</p>
                             <a href="#">
                                 <h4 class="sec_h4">Fanny Spencer</h4>
                             </a>
@@ -286,10 +287,10 @@
                         <img class="rounded-circle" src="img/pexels-pixabay-415829.jpg"
                             alt="pexels.com/photo/woman-wearing-black-spaghetti-strap-top-415829">
                         <div class="media-body">
-                            <p>As conscious traveling Paupers we must always be concerned about our dear Mother Earth. If
-                                you think about it, you travel across her face, and She is the </p>
+                            <p>The staff was friendly and welcoming, and the room was beautiful and clean. I would
+                                definitely recommend this hotel to anyone looking for a place to stay in the area.</p>
                             <a href="#">
-                                <h4 class="sec_h4">Fanny Spencer</h4>
+                                <h4 class="sec_h4">Tzuyu</h4>
                             </a>
                             <div class="star">
                                 <a href="#"><i class="fa fa-star"></i></a>

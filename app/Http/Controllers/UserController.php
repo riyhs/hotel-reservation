@@ -215,8 +215,8 @@ class UserController extends Controller
 
     public function accomodation()
     {
-        $rooms = Room::orderBy('price', 'DESC')->take(12)->get();
-        $roomSpecs = RoomSpec::orderBy('id', 'DESC')->get();
+        $rooms = Room::orderBy('price', 'ASC')->get();
+        $roomSpecs = RoomSpec::orderBy('id', 'ASC')->get();
         return view('accomodation', compact('rooms', 'roomSpecs'));
     }
 }
