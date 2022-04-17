@@ -15,8 +15,8 @@
                         <input type="text" class="form-control daterange-cus" name="daterange"
                             value="04/10/2022 - 04/15/2022"
                             style="border-top-left-radius: 0;
-                                                                                                                                                                                                                                                                            border-bottom-left-radius: 0;
-                                                                                                                                                                                                                                                                            height:42px;border-radius: 0.25rem" />
+                                                                                                                                                                                                                                                                                                                            border-bottom-left-radius: 0;
+                                                                                                                                                                                                                                                                                                                            height:42px;border-radius: 0.25rem" />
                     </div>
 
                     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -52,7 +52,7 @@
                 <button form="search" type="submit" class="btn btn-primary ml-2" style="height: 42px;">Search</button>
             </div>
             <div class="card-body p-0">
-                <div class="table-responsive">
+                <div class="table-responsive" style="overflow-x: visible">
                     <table class="table table-striped table-md">
                         <tbody>
                             <tr>
@@ -71,7 +71,15 @@
                                 <tr>
                                     <td>{{ $reservation->id }}</td>
                                     <td>{{ $reservation->guest }}</td>
-                                    <td><span class="badge badge-warning">Proccess</span></td>
+                                    <td>
+                                        @if ($reservation->status == 'process')
+                                            <span class="badge badge-warning">{{ $reservation->status }}</span>
+                                        @elseif($reservation->status == 'check in')
+                                            <span class="badge badge-success">{{ $reservation->status }}</span>
+                                        @else
+                                            <span class="badge badge-danger">{{ $reservation->status }}</span>
+                                        @endif
+                                    </td>
                                     <td>{{ $reservation->phone }}</td>
                                     @if ($reservation->room_amount > 1)
                                         <td>{{ $reservation->room_amount }} Rooms</td>
@@ -94,25 +102,25 @@
                                                     method="POST">
                                                     @csrf
                                                     @method('put')
-                                                    <input type="hidden" value="check in">
+                                                    <input type="hidden" value="check in" name="status">
                                                     <button type="submit" class="btn btn-success" style="width: 100%">Check
                                                         In</button>
                                                 </form>
                                                 <form
-                                                    action="{{ route('delete_reservation', ['id' => $reservation->id]) }}"
+                                                    action="{{ route('update_reservation', ['id' => $reservation->id]) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('put')
-                                                    <input type="hidden" value="process">
+                                                    <input type="hidden" value="process" name="status">
                                                     <button type="submit" class="btn btn-warning mt-2"
                                                         style="width: 100%">Proccess</button>
                                                 </form>
                                                 <form
-                                                    action="{{ route('delete_reservation', ['id' => $reservation->id]) }}"
+                                                    action="{{ route('update_reservation', ['id' => $reservation->id]) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('put')
-                                                    <input type="hidden" value="cancel">
+                                                    <input type="hidden" value="cancel" name="status">
                                                     <button type="submit" class="btn btn-danger mt-2"
                                                         style="width: 100%">Cancel</button>
                                                 </form>
@@ -120,7 +128,7 @@
                                             </div>
                                         </div>
 
-                                        <a href="{{ route('edit_reservation', ['id' => $reservation->id]) }}"
+                                        <a href="{{ route('detail_reservation', ['id' => $reservation->id]) }}"
                                             class="btn btn-info">
                                             Open
                                         </a>

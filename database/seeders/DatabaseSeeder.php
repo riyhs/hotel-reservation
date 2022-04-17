@@ -161,6 +161,110 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
+        $rooms = [
+            [
+                'name' => 'Lyndon',
+                'image' => 'andrea-davis-NngNVT74o6s-unsplash.jpg',
+                'price' => 5000000,
+                'amount' => 10,
+                'used' => 0,
+                'spec_id' => 1,
+                'created_at' => "2022-04-14 00:12:12",
+                'updated_at' => "2022-04-14 00:12:12",
+            ],
+            [
+                'name' => 'Lyndon',
+                'image' => 'andrea-davis-NngNVT74o6s-unsplash.jpg',
+                'price' => 5000000,
+                'amount' => 10,
+                'used' => 0,
+                'spec_id' => 1,
+                'created_at' => "2022-04-14 00:12:12",
+                'updated_at' => "2022-04-14 00:12:12",
+            ],
+            [
+                'name' => 'Lyndon',
+                'image' => 'andrea-davis-NngNVT74o6s-unsplash.jpg',
+                'price' => 5000000,
+                'amount' => 10,
+                'used' => 0,
+                'spec_id' => 1,
+                'created_at' => "2022-04-14 00:12:12",
+                'updated_at' => "2022-04-14 00:12:12",
+            ],
+            [
+                'name' => 'Lyndon',
+                'image' => 'andrea-davis-NngNVT74o6s-unsplash.jpg',
+                'price' => 5000000,
+                'amount' => 10,
+                'used' => 0,
+                'spec_id' => 2,
+                'created_at' => "2022-04-14 00:12:12",
+                'updated_at' => "2022-04-14 00:12:12",
+            ],
+            [
+                'name' => 'Lyndon',
+                'image' => 'andrea-davis-NngNVT74o6s-unsplash.jpg',
+                'price' => 5000000,
+                'amount' => 10,
+                'used' => 0,
+                'spec_id' => 2,
+                'created_at' => "2022-04-14 00:12:12",
+                'updated_at' => "2022-04-14 00:12:12",
+            ],
+            [
+                'name' => 'Lyndon',
+                'image' => 'andrea-davis-NngNVT74o6s-unsplash.jpg',
+                'price' => 5000000,
+                'amount' => 10,
+                'used' => 0,
+                'spec_id' => 2,
+                'created_at' => "2022-04-14 00:12:12",
+                'updated_at' => "2022-04-14 00:12:12",
+            ],
+            [
+                'name' => 'Lyndon',
+                'image' => 'andrea-davis-NngNVT74o6s-unsplash.jpg',
+                'price' => 5000000,
+                'amount' => 10,
+                'used' => 0,
+                'spec_id' => 3,
+                'created_at' => "2022-04-14 00:12:12",
+                'updated_at' => "2022-04-14 00:12:12",
+            ],
+            [
+                'name' => 'Lyndon',
+                'image' => 'andrea-davis-NngNVT74o6s-unsplash.jpg',
+                'price' => 5000000,
+                'amount' => 10,
+                'used' => 0,
+                'spec_id' => 3,
+                'created_at' => "2022-04-14 00:12:12",
+                'updated_at' => "2022-04-14 00:12:12",
+            ],
+            [
+                'name' => 'Lyndon',
+                'image' => 'andrea-davis-NngNVT74o6s-unsplash.jpg',
+                'price' => 5000000,
+                'amount' => 10,
+                'used' => 0,
+                'spec_id' => 4,
+                'created_at' => "2022-04-14 00:12:12",
+                'updated_at' => "2022-04-14 00:12:12",
+            ],
+            [
+                'name' => 'Lyndon',
+                'image' => 'andrea-davis-NngNVT74o6s-unsplash.jpg',
+                'price' => 5000000,
+                'amount' => 10,
+                'used' => 0,
+                'spec_id' => 4,
+                'created_at' => "2022-04-14 00:12:12",
+                'updated_at' => "2022-04-14 00:12:12",
+            ],
+
+        ];
+
         foreach ($users as $user) {
             User::create($user);
         }
@@ -171,7 +275,10 @@ class DatabaseSeeder extends Seeder
 
         Guest::factory(1)->create();
         RoomSpec::factory(4)->create();
-        Room::factory(12)->create();
+
+        foreach ($rooms as $room) {
+            Room::create($room);
+        }
 
         foreach ($room_facilities as $room_facility) {
             RoomFacility::create($room_facility);

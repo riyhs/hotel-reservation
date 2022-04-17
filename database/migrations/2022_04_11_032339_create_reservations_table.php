@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
             $table->string('email');
+            $table->enum('status', ['process', 'check in', 'cancel']);
             $table->string('phone');
             $table->string('guest');
             $table->integer('room_amount');

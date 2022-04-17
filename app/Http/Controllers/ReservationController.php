@@ -75,19 +75,13 @@ class ReservationController extends Controller
         return redirect("reservation")->withSuccess('Reservation created successfully');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Reservation  $reservation
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function detail($id)
     {
         $reservation = Reservation::find($id);
         $reservers = Guest::orderBy('id', 'desc')->get();
         $rooms = Room::orderBy('id', 'desc')->get();
 
-        return view('admin.reservation.edit', compact('reservation', 'reservers', 'rooms'));
+        return view('admin.reservation.detail', compact('reservation', 'reservers', 'rooms'));
     }
 
     /**
