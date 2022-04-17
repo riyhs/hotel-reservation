@@ -60,7 +60,7 @@
                         <div class="col-md-6">
                             <p>
                                 <strong>Reserver:</strong><br>
-                                Name: {{ $reservation->guest }}<br>
+                                Name: {{ $reservation->reserver->name }}<br>
                                 E-mail: {{ $reservation->email }}<br>
                                 Phone: {{ $reservation->phone }}<br>
                             </p>
@@ -68,6 +68,7 @@
                         <div class="col-md-6 text-md-right">
                             <p>
                                 <strong>Informations:</strong><br>
+                                Guest: {{ $reservation->guest }} <br>
                                 Date: {{ $reservation->created_at }}<br>
                                 Notes: {{ $reservation->notes }}
                             </p>
@@ -124,21 +125,6 @@
                             <p class="section-lead">Please come to the hotel 30 Minutes before making your check in
                             </p>
                         </div>
-                        {{-- <div class="col-lg-4 text-right">
-                            <div class="invoice-detail-item">
-                                <div class="invoice-detail-name">Subtotal</div>
-                                <div class="invoice-detail-value">$670.99</div>
-                            </div>
-                            <div class="invoice-detail-item">
-                                <div class="invoice-detail-name">Shipping</div>
-                                <div class="invoice-detail-value">$15</div>
-                            </div>
-                            <hr class="mt-2 mb-2">
-                            <div class="invoice-detail-item">
-                                <div class="invoice-detail-name">Total</div>
-                                <div class="invoice-detail-value invoice-detail-value-lg">$685.99</div>
-                            </div>
-                        </div> --}}
                     </div>
                 </div>
             </div>

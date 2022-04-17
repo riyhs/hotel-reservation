@@ -8,7 +8,7 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Reserver Name</th>
+                        <th scope="col">Guest Name</th>
                         <th scope="col">Check In</th>
                         <th scope="col">Check Out</th>
                         <th scope="col">Room Amount</th>
