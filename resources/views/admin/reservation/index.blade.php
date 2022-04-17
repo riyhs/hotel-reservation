@@ -13,9 +13,10 @@
                             </div>
                         </div>
                         <input type="text" class="form-control daterange-cus" name="daterange"
-                            value="04/10/2022 - 04/15/2022" style="border-top-left-radius: 0;
-                                        border-bottom-left-radius: 0;
-                                        height:42px;border-radius: 0.25rem" />
+                            value="04/10/2022 - 04/15/2022"
+                            style="border-top-left-radius: 0;
+                                                                                                                                                                                                                                                                            border-bottom-left-radius: 0;
+                                                                                                                                                                                                                                                                            height:42px;border-radius: 0.25rem" />
                     </div>
 
                     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -56,42 +57,75 @@
                         <tbody>
                             <tr>
                                 <th>#</th>
-                                <th>Reserver</th>
                                 <th>Guest</th>
-                                <th>E-Mail</th>
+                                <th>Status</th>
                                 <th>Phone</th>
-                                <th>Room Booked</th>
+                                <th>Room</th>
                                 <th>Room Name</th>
                                 <th>Check In</th>
                                 <th>Check Out</th>
-                                <th>Notes</th>
-                                {{-- <th class="text-center">Action</th> --}}
+                                {{-- <th>Notes</th> --}}
+                                <th class="text-center">Action</th>
                             </tr>
                             @foreach ($reservations as $reservation)
                                 <tr>
                                     <td>{{ $reservation->id }}</td>
-                                    <td>{{ $reservation->reserver->name }}</td>
                                     <td>{{ $reservation->guest }}</td>
-                                    <td>{{ $reservation->email }}</td>
+                                    <td><span class="badge badge-warning">Proccess</span></td>
                                     <td>{{ $reservation->phone }}</td>
-                                    <td>{{ $reservation->room_amount }}</td>
+                                    @if ($reservation->room_amount > 1)
+                                        <td>{{ $reservation->room_amount }} Rooms</td>
+                                    @else
+                                        <td>{{ $reservation->room_amount }} Room</td>
+                                    @endif
                                     <td>{{ $reservation->room->name }}</td>
                                     <td>{{ $reservation->check_in }}</td>
                                     <td>{{ $reservation->check_out }}</td>
-                                    <td>{{ $reservation->notes }}</td>
-                                    {{-- <td class="text-center">
+                                    {{-- <td>{{ $reservation->notes }}</td> --}}
+                                    <td class="text-center">
+                                        <div class="dropdown dropleft" style=" display: inline-block;">
+                                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2"
+                                                data-toggle="dropdown" aria-expanded="false">
+                                                Status
+                                            </button>
+                                            <div class="dropdown-menu shadow p-2" aria-labelledby="dropdownMenu2">
+                                                <form
+                                                    action="{{ route('update_reservation', ['id' => $reservation->id]) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('put')
+                                                    <input type="hidden" value="check in">
+                                                    <button type="submit" class="btn btn-success" style="width: 100%">Check
+                                                        In</button>
+                                                </form>
+                                                <form
+                                                    action="{{ route('delete_reservation', ['id' => $reservation->id]) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('put')
+                                                    <input type="hidden" value="process">
+                                                    <button type="submit" class="btn btn-warning mt-2"
+                                                        style="width: 100%">Proccess</button>
+                                                </form>
+                                                <form
+                                                    action="{{ route('delete_reservation', ['id' => $reservation->id]) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('put')
+                                                    <input type="hidden" value="cancel">
+                                                    <button type="submit" class="btn btn-danger mt-2"
+                                                        style="width: 100%">Cancel</button>
+                                                </form>
+
+                                            </div>
+                                        </div>
+
                                         <a href="{{ route('edit_reservation', ['id' => $reservation->id]) }}"
                                             class="btn btn-info">
-                                            Edit
+                                            Open
                                         </a>
 
-                                        <form action="{{ route('delete_reservation', ['id' => $reservation->id]) }}"
-                                            method="POST" style="display: inline-block;">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td> --}}
+                                    </td>
                                 </tr>
                             @endforeach
 

@@ -97,7 +97,7 @@ Route::controller(ReservationController::class)->group(function () {
     Route::get('/reservation/create', 'create')->name('create_reservation');
     Route::post('/reservation/create', 'store')->name('save_reservation');
     Route::get('/reservation/edit/{id}', 'edit')->name('edit_reservation');
-    Route::put('/reservation/edit/{id}', 'update');
+    Route::put('/reservation/edit/{id}', 'update')->name('update_reservation');
     Route::delete('/reservation/delete/{id}', 'destroy')->name('delete_reservation');
 
     // GUEST

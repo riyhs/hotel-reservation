@@ -100,21 +100,12 @@ class ReservationController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => ['required'],
-            'room' => ['required'],
+            'status' => ['required'],
         ]);
 
         $reservation = Reservation::find($id);
 
-        $reservation->email = $request->email;
-        $reservation->phone = $request->phone;
-        $reservation->guest = $request->guest;
-        $reservation->room_amount = $request->amount;
-        $reservation->check_in = $request->checkin;
-        $reservation->check_out = $request->checkout;
-        $reservation->notes = $request->notes;
-        $reservation->room_id = $request->room;
-        $reservation->guest_id = $request->name;
+        $reservation->status = $request->status;
         $reservation->update();
 
         return redirect("reservation")->withSuccess('Reservation updated successfully');
