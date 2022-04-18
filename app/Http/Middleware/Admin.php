@@ -20,6 +20,6 @@ class Admin
         if (Auth::guard('web')->check() && auth()->user()->role == 'admin') {
             return $next($request);
         }
-        return redirect('/')->with('error', 'You have not admin access');
+        return redirect('/youlost')->with('error', 'You have not admin access');
     }
 }

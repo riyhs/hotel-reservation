@@ -20,6 +20,6 @@ class Receptionist
         if (Auth::guard('web')->check() && auth()->user()->role == 'receptionist') {
             return $next($request);
         }
-        return redirect('/')->with('error', 'You have not receptionist access');
+        return redirect('/youlost')->with('error', 'You have not receptionist access');
     }
 }

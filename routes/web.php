@@ -56,6 +56,10 @@ Route::get('/admin', function () {
     return view('admin/auth/login');
 });
 
+Route::get('/youlost', function () {
+    return view('404');
+});
+
 Route::controller(RoomSpecController::class)->group(function () {
     Route::get('/room_spec', 'index')->name('room_spec')->middleware('admin');
     Route::get('/room_spec/create', 'view_create')->name('create_room_spec')->middleware('admin');
