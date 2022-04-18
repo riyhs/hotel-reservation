@@ -30,7 +30,6 @@ class ReservationController extends Controller
         } else {
             $reservations = Reservation::orderBy('id', 'desc')->get();
         }
-
         return view('admin.reservation.index', compact('reservations'));
     }
 

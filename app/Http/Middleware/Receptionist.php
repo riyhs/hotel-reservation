@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Receptionist
 {
@@ -16,7 +17,7 @@ class Receptionist
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->role == 'receptionist') {
+        if (Auth::guard('web')->check() && auth()->user()->role == 'receptionist') {
             return $next($request);
         }
         return redirect('/')->with('error', 'You have not receptionist access');

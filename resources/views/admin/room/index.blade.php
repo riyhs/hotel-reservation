@@ -16,8 +16,8 @@
                                 <th>Room Spec</th>
                                 <th>Price</th>
                                 <th>Amount</th>
-                                <th>Used</th>
-                                <th>Available</th>
+                                {{-- <th>Used</th> --}}
+                                {{-- <th>Available</th> --}}
                                 <th class="text-center">Action</th>
                             </tr>
 
@@ -28,8 +28,8 @@
                                     <td>{{ $room->roomSpec->name }}</td>
                                     <td>{{ number_format($room->price, 0, ',', '.') }}</td>
                                     <td>{{ $room->amount }}</td>
-                                    <td>{{ $room->used }}</td>
-                                    <td>{{ $room->amount - $room->used }}</td>
+                                    {{-- <td>{{ $room->used }}</td> --}}
+                                    {{-- <td>{{ $room->amount - $room->used }}</td> --}}
                                     <td class="text-center">
                                         <a href="{{ route('edit_room', ['id' => $room->id]) }}" class="btn btn-info">
                                             Edit
