@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
-            $table->string('no');
+            $table->string('name');
+            $table->string('image')->nullable();
             $table->unsignedInteger('price');
             $table->unsignedSmallInteger('amount');
             $table->unsignedSmallInteger('used');
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->foreignId('spec_id')
                 ->constrained('room_specs')
                 ->cascadeOnDelete();
+
             $table->timestamps();
         });
     }

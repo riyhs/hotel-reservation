@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\RoomSpec;
+use App\Models\RoomFacility;
 use Illuminate\Http\Request;
 
 class RoomSpecController extends Controller
@@ -15,7 +16,7 @@ class RoomSpecController extends Controller
     public function index()
     {
         $roomSpecs = RoomSpec::orderBy('id', 'desc')->get();
-        return view('admin.room_spec', compact('roomSpecs'));
+        return view('admin.room_spec.index', compact('roomSpecs'));
     }
 
     /**
@@ -30,7 +31,7 @@ class RoomSpecController extends Controller
 
     public function view_create()
     {
-        return view('admin.room_spec_create');
+        return view('admin.room_spec.create');
     }
 
     /**
@@ -51,7 +52,7 @@ class RoomSpecController extends Controller
             'description' => $request->description,
         ]);
 
-        return redirect("room_spec")->withSuccess('Create Room Spec Success');
+        return redirect("room_spec")->withSuccess('Room Spec Created Successfully');
     }
 
     /**
@@ -74,8 +75,11 @@ class RoomSpecController extends Controller
     public function edit($id)
     {
         $roomSpec = RoomSpec::find($id);
+        $facilities = RoomFacility::orderBy('name', 'ASC')
+            ->where('spec_id', $id)
+            ->get();
 
-        return view('admin.room_spec_edit', compact('roomSpec'));
+        return view('admin.room_spec.edit', compact('roomSpec', 'facilities'));
     }
 
     /**
@@ -97,7 +101,7 @@ class RoomSpecController extends Controller
         $roomSpec->description = $request->description;
         $roomSpec->update();
 
-        return redirect('room_spec')->withSuccess('RoomSpec Updated Successfully');
+        return redirect('room_spec')->withSuccess('Room Spec Updated Successfully');
     }
 
     /**
@@ -110,6 +114,6 @@ class RoomSpecController extends Controller
     {
         $roomSpec = RoomSpec::find($id);
         $roomSpec->delete();
-        return redirect('room_spec')->withSuccess('Student Deleted Successfully');
+        return redirect('room_spec')->withSuccess('Room Spec Deleted Successfully');
     }
 }

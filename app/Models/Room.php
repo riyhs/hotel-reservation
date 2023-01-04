@@ -14,6 +14,11 @@ class Room extends Model
 
     public function roomSpec()
     {
-        return $this->hasOne(RoomSpec::class);
+        return $this->belongsTo(RoomSpec::class, 'spec_id');
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
     }
 }
